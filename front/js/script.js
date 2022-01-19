@@ -39,49 +39,47 @@ async function startProgram() {
   
     const list = document.querySelector("#countries-list");
     list.innerHTML = countriesName.join("");
-  }
-  startProgram();
+}
+startProgram();
   
     //***** Click *****//
-  const button = document.querySelector("#btnShowData");
+//   const button = document.querySelector("#btnShowData");
   
-  button.addEventListener("click", () => {
-    startSearchProgram();
-  });
+//   button.addEventListener("click", () => {
+//     resetProgram();
+//   });
   
     //*****  Search by name's country *****//
-  async function getCountriesByName() {
-    const userInput = document.querySelector("input").value;
-    const res = await fetch(`https://restcountries.com/v3.1/${userInput}`);
-    const data = await res.json();
+//   async function getCountriesByName() {
+//     const userInput = document.querySelector("input").value;
+//     const res = await fetch(`https://restcountries.com/v3.1/${userInput}`);
+//     const data = await res.json();
   
-    return data;
-  }
+//     return data;
+//   }
   
   //***** Search by capital *****//
-  async function getCountriesByCapital() {
-    const userInput = document.querySelector("input").value;
-    const res = await fetch(
-      `https://restcountries.com/v3.1/capital/${userInput}`
-    );
-    const data = await res.json();
+//   async function getCountriesByCapital() {
+//     const userInput = document.querySelector("input").value;
+//     const res = await fetch(
+//       `https://restcountries.com/v3.1/capital/${userInput}`
+//     );
+//     const data = await res.json();
   
-    return data;
-  }
+//     return data;
+//   }
   
   //***** Reset *****//
-  async function resetProgram() {
-    const country = await getCountriesByName();
+//   async function resetProgram() {
+//     const country = await getCountriesByName();
   
-    const list = document.querySelector("#countries-list");
-    list.innerHTML = `<li>
-        <p>Country : ${country.name.common}</p>
-        <p>Capital : ${country.capital}</p>
-        <p>Continent : ${country.continents}</p>
-        </li>`;
-  
-      const capital = await getCountriesByCapital();
-    };
+//     const list = document.querySelector("#countries-list");
+//     list.innerHTML = `<li>
+//         <p>Country : ${country.name.common}</p>
+//         <p>Capital : ${country.capital}</p>
+//         <p>Continent : ${country.continents}</p>
+//         </li>`;
+//     };
   
     
   
