@@ -1,4 +1,5 @@
-// Show names of all Countries
+//***** Show names of all Countries *****//
+// Version 1
 // $("#btnShowData").click(function getAllCountries() {
 //     $.ajax({
 //       url:"https://restcountries.com/v3.1/all",
@@ -12,6 +13,8 @@
 //       }
 //     });
 // });
+
+// Version 2
 async function getCountries() {
     const res = await fetch(`https://restcountries.com/v3.1/all`);
     const data = await res.json();
@@ -19,7 +22,8 @@ async function getCountries() {
     return data;
   }  
 
-// Take infos of country
+
+//***** Take infos of countries *****//
 async function startProgram() {
     const countries = await getCountries();
   
@@ -28,7 +32,6 @@ async function startProgram() {
       <p>Country :  ${country.name.common}</p>
       <p>Capital : ${country.capital}</p>
       <p>Continent : ${country.continents}</p>
-      <p>Currency : ${country.currencies}</p>
       </li>`;
       
       ;
@@ -39,15 +42,14 @@ async function startProgram() {
   }
   startProgram();
   
- 
-  // Click
+    //***** Click *****//
   const button = document.querySelector("#btnShowData");
   
   button.addEventListener("click", () => {
     startSearchProgram();
   });
   
-    //  Search by name's country
+    //*****  Search by name's country *****//
   async function getCountriesByName() {
     const userInput = document.querySelector("input").value;
     const res = await fetch(`https://restcountries.com/v3.1/${userInput}`);
@@ -56,7 +58,7 @@ async function startProgram() {
     return data;
   }
   
-  //  Search by capital
+  //***** Search by capital *****//
   async function getCountriesByCapital() {
     const userInput = document.querySelector("input").value;
     const res = await fetch(
@@ -67,16 +69,15 @@ async function startProgram() {
     return data;
   }
   
-  //   Reset
-  async function startSearchProgram() {
+  //***** Reset *****//
+  async function resetProgram() {
     const country = await getCountriesByName();
   
     const list = document.querySelector("#countries-list");
     list.innerHTML = `<li>
-        <p>Country : ${country.name.common.toUpperCase()}</p>
+        <p>Country : ${country.name.common}</p>
         <p>Capital : ${country.capital}</p>
         <p>Continent : ${country.continents}</p>
-        <p>Currency : ${country.currencies}</p>
         </li>`;
   
       const capital = await getCountriesByCapital();
