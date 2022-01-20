@@ -4,9 +4,14 @@ var countriesList = $("#countries");
   $("#btnShowData").click(search);
 
   //***** RESET BUTTON *****//
-  $("#btnReset").click(function(){
-    $("#results").empty();
-  });
+  function resetButton() {
+    $("#btnReset").click(function(){
+      $("#results").empty();
+    });
+  } 
+
+
+ 
   
   function search() {
 
@@ -61,6 +66,7 @@ var countriesList = $("#countries");
               .appendTo(countriesList);
           });
         },
+        resetButton()
       });
     }
 
@@ -86,28 +92,27 @@ var countriesList = $("#countries");
       });
     }
 
-    //('<b> Countries: </b>' + JSON.stringify(data[0]))
     // ***** SEARCH BY EUROPE *****//
     else if (europe) {
       $.ajax({
         url: "https://restcountries.com/v3.1/region/europe",
 
-        success: function (res) {
-          countriesList.empty();
+        success: function (data) {
+          
+          let searchCountryByRegion;
 
-          res.data.map((country) => {
-            $("i")
-              .html(
-                `<li>
-                  <p>Country : ${country.region}</p>
-                  <p>Capital : ${country.capital}</p>
-                  <p>Continent : ${country.continents}</p>
-                </li>`
-              )
-              .appendTo(countriesList);
+          searchCountryByRegion = data.map((country) => {
+
+           return `<li>
+                    <p>Country : ${country.name.common}</p>
+                    <p>Capital : ${country.capital}</p>
+                    <p>Continent : ${country.continents}</p>
+                  </li>`;  
           });
-        },
-      });
+
+          $("i").html(searchCountryByRegion)
+        },  
+      });     
     }
 
     // ***** SEARCH BY ASIA *****//
@@ -116,21 +121,20 @@ var countriesList = $("#countries");
         url: "https://restcountries.com/v3.1/region/asia",
 
         success: function (data) {
-          countriesList.empty();
-
-          data.forEach((country) => {
-            $("i")
-              .html(
-                `<li>
-                  <p>Country : ${country.name.common}</p>
-                  <p>Capital : ${country.capital}</p>
-                  <p>Continent : ${country.continents}</p>
-                </li>`
-              )
-              .appendTo(countriesList);
-          });
           
-        },
+          let searchCountryByRegion;
+
+          searchCountryByRegion = data.map((country) => {
+
+           return `<li>
+                    <p>Country : ${country.name.common}</p>
+                    <p>Capital : ${country.capital}</p>
+                    <p>Continent : ${country.continents}</p>
+                  </li>`;  
+          });
+
+          $("i").html(searchCountryByRegion)
+        },  
       });
     }
 
@@ -140,20 +144,20 @@ var countriesList = $("#countries");
         url: "https://restcountries.com/v3.1/region/africa",
 
         success: function (data) {
-          countriesList.empty();
+          
+          let searchCountryByRegion;
 
-          data.map((country) => {
-            $("i")
-              .html(
-                `<li>
-                  <p>Country : ${country.name.common}</p>
-                  <p>Capital : ${country.capital}</p>
-                  <p>Continent : ${country.continents}</p>
-                </li>`
-              )
-              .appendTo(countriesList);
+          searchCountryByRegion = data.map((country) => {
+
+           return `<li>
+                    <p>Country : ${country.name.common}</p>
+                    <p>Capital : ${country.capital}</p>
+                    <p>Continent : ${country.continents}</p>
+                  </li>`;  
           });
-        },
+
+          $("i").html(searchCountryByRegion)
+        },  
       });
     }
   }
