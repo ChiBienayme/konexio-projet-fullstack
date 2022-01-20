@@ -6,11 +6,12 @@ var countriesList = $("#countries");
   //***** RESET BUTTON *****//
   $("#btnReset").click(function(){
     $("#results").empty();
-    $("#results").search();
   });
   
   function search() {
+
     var countryName = $("#country-name").val();
+
     var countries = $("input[name='pays']:checked").val();
     var capital = $("input[name='capitale']:checked").val();
     var region = $("input[name='région']:checked").val();
@@ -30,10 +31,10 @@ var countriesList = $("#countries");
             $("i")
               .html(
                 `<li>
-                                <p>Country : ${country.name.common}</p>
-                                <p>Capital : ${country.capital}</p>
-                                <p>Continent : ${country.continents}</p>
-                              </li>`
+                  <p>Country : ${country.name.common}</p>
+                  <p>Capital : ${country.capital}</p>
+                  <p>Continent : ${country.continents}</p>
+                </li>`
               )
               .appendTo(countriesList);
           });
@@ -52,10 +53,10 @@ var countriesList = $("#countries");
             $("i")
               .html(
                 `<li>
-                              <p>Country : ${country.name.common}</p>
-                              <p>Capital : ${country.capital}</p>
-                              <p>Continent : ${country.continents}</p>
-                            </li>`
+                  <p>Country : ${country.name.common}</p>
+                  <p>Capital : ${country.capital}</p>
+                  <p>Continent : ${country.continents}</p>
+                </li>`
               )
               .appendTo(countriesList);
           });
@@ -74,10 +75,10 @@ var countriesList = $("#countries");
             $("i")
               .html(
                 `<li>
-                                <p>Country : ${country.name.common}</p>
-                                <p>Capital : ${country.capital}</p>
-                                <p>Continent : ${country.continents}</p>
-                              </li>`
+                  <p>Country : ${country.name.common}</p>
+                  <p>Capital : ${country.capital}</p>
+                  <p>Continent : ${country.continents}</p>
+                </li>`
               )
               .appendTo(countriesList);
           });
@@ -89,16 +90,16 @@ var countriesList = $("#countries");
     // ***** SEARCH BY EUROPE *****//
     else if (europe) {
       $.ajax({
-        url: "https://restcountries.com/v3.1/subregion/europe",
+        url: "https://restcountries.com/v3.1/region/europe",
 
-        success: function (data) {
+        success: function (res) {
           countriesList.empty();
 
-          data.forEach((country) => {
+          res.data.map((country) => {
             $("i")
               .html(
                 `<li>
-                  <p>Country : ${country.name.common}</p>
+                  <p>Country : ${country.region}</p>
                   <p>Capital : ${country.capital}</p>
                   <p>Continent : ${country.continents}</p>
                 </li>`
@@ -112,7 +113,7 @@ var countriesList = $("#countries");
     // ***** SEARCH BY ASIA *****//
     else if (asia) {
       $.ajax({
-        url: "https://restcountries.com/v3.1/subregion/asia",
+        url: "https://restcountries.com/v3.1/region/asia",
 
         success: function (data) {
           countriesList.empty();
@@ -136,19 +137,19 @@ var countriesList = $("#countries");
     // ***** SEARCH BY AFRICA *****//
     else if (africa) {
       $.ajax({
-        url: "https://restcountries.com/v3.1/subregion/africa",
+        url: "https://restcountries.com/v3.1/region/africa",
 
         success: function (data) {
           countriesList.empty();
 
-          data.forEach((country) => {
+          data.map((country) => {
             $("i")
               .html(
                 `<li>
-                              <p>Country : ${country.name.common}</p>
-                              <p>Capital : ${country.capital}</p>
-                              <p>Continent : ${country.continents}</p>
-                            </li>`
+                  <p>Country : ${country.name.common}</p>
+                  <p>Capital : ${country.capital}</p>
+                  <p>Continent : ${country.continents}</p>
+                </li>`
               )
               .appendTo(countriesList);
           });
