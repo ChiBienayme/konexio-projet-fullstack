@@ -17,71 +17,75 @@
   </head>
 
   <body>
-    <h2 id="title">Countries API</h2>
+    <header>
+      <h2 id="title" class="display-1 align-middle text-center m-3">Countries API</h2>
+    </header>
 
-    <!-- Input: searching bar -->
-    <input placeholder="Search" id="search" /> <br /><br />
+    <main>
 
-    <!-- Searching by countries, capitals and regions -->
-    <div class="form-check">
-      <input
-        type="radio"
-        id="countries"
-        class="p-3"
-        name="option"
-        value="pays"
-      />
-      Recherche par pays <br />
+      <!-- Input: searching bar -->
+      <input placeholder="Cherchez les informations du pays" id="search" class="text-center p-2 m-3"/>
       
-      <input
-        type="radio"
-        id="capital"
-        class="p-3"
-        name="option"
-        value="capitale"
-      />
-      Recherche par capitale <br />
-      <input
-        type="radio"
-        id="region"
-        class="p-3"
-        name="option"
-        value="region"
-      />
-      Recherche par region<br />
-    </div>
+      <!-- Searching by countries, capitals and regions -->
+      <section class="form-check align-middle text-center m-3">
+        <div class="container">
 
-    <!-- Chose Region -->
-    <div class="form-check">
-      <input type="radio" for="region" id="options" class="p-2" name="option" />
-      Zone géographique
+          <div class="p-2 m-2">
+            <input type="radio" id="countries" class="p-2 m-2" name="option" value="pays"/> 
+            <label for="countrySearch">Recherche par pays </label> 
+  
+            <input type="radio" id="capital" class="p-2 m-2" name="option" value="capitale"/> 
+            <label for="capitalSearch">Recherche par capitale </label> 
+  
+            <input type="radio" id="region" class="p-2 m-2" name="option" value="region" />
+            <label for="regionSearch">Recherche par région</label> 
 
-      <select name="region" id="options">
-        <option value="Europe">Europe</option>
-        <option value="Asia">Asia</option>
-        <option value="Africa">Africa</option>
-      </select>
-    </div>
-    <br /><br />
+            <!-- Chose Region -->
+              <input type="radio" for="region" id="options" class="p-2 m-2" name="option" />
+              <label for="choseRegion">Zone géographique</label>
+    
+              <select name="region" id="options">
+                <option value="None"></option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Africa">Africa</option>
+              </select>
+            
+          </div>
 
-    <!-- Button-->
-    <button id="btnShowData" class="btn btn-primary m-1">Show Data</button>
-    <button id="btnReset" class="btn btn-primary m-1">Reset</button>
+        </div>
+ 
+      </section>
 
-    <!-- Loading -->
-    <div>
-      <!-- <button id='showCountries' class="btn btn-primary m-1">Show Countries</button> -->
-      <!-- <input
-        id="loading"
-        class="spinner-border"
-        data-loading-text="Loading..."
-      /> -->
-    </div>
 
-    <!-- Results -->
-    <ul id="results">
-      <i></i>
-    </ul>
+      <!-- Button-->
+      <div class="align-middle text-center">
+        <button id="btnShowData" class="btn btn-primary  m-3">Show Data</button>
+        <button id="btnReset" class="btn btn-danger m-3">Reset</button>
+      </div>
+      
+
+      
+   
+      <!-- Loading -->
+      <!-- <div>
+        <button id='showCountries' class="btn btn-primary m-1">Show Countries</button>
+        <input
+          id="loading"
+          class="spinner-border"
+          data-loading-text="Loading..."
+        />
+      </div> -->
+
+      <!-- Results -->
+      <ul id="results">
+        <i></i>
+      </ul>
+            
+
+    </main>
+      
+    
 
     <!-- JS -->
     <script src="../assets/jQuery/jQuery.js"></script>

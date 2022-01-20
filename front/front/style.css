@@ -1,4 +1,11 @@
+main {
+  background-color: rgb(255, 251, 217)  
+}
 body {
   padding: 5%;
- 
+}
+
+#search {
+  width: 97%;
+  text-align: center;
 }
